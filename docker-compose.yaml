@@ -1,0 +1,42 @@
+services:
+
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-main
+    ports:
+      - "8000:8000"
+    command: >
+      bash -c "uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload"
+    env_file:
+      - ./.env
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/app
+    networks:
+      - test_net
+
+  mongodb:
+    image: mongo:latest
+    container_name: test-mongodb
+    ports:
+      - "${MONGO_PORT}:27017"
+    env_file:
+      - ./.env
+    volumes:
+      - mongodb_data:/data/db
+    # healthcheck:
+    #   test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
+    networks:
+      - test_net
+
+volumes:
+  mongodb_data:
+
+networks:
+  test_net:
