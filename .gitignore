@@ -168,5 +168,8 @@ bd_backup/
 .idea/
 
 
-# Egors Test
+# Tests
 test.py
+
+# SSL
+/ssl

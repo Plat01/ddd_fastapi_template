@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     GOOGLE_AUTHORIZATION_ENDPOINT: str = "https://accounts.google.com/o/oauth2/v2/auth"
     GOOGLE_TOKEN_ENDPOINT: str = "https://oauth2.googleapis.com/token"
     GOOGLE_USERINFO_ENDPOINT : str = "https://www.googleapis.com/oauth2/v2/userinfo"
+    GOOGLe_CALLBACK_ENDPOINT: str = "http://localhost:8000/auth/google/callback"
 
     MONGO_URI: str
     MONGO_DB_NAME: str = "auth_service"
@@ -41,6 +42,10 @@ class URLs():
     # YANDEX
     YANDEX_AUTH: str = f"/yandex"
     YANDEX_AUTH_CALLBACK: str = f"{YANDEX_AUTH}/callback"
+
+    # VK
+    VK_AUTH: str = f"/vk"
+    VK_AUTH_CALLBACK: str = f"{VK_AUTH}/callback"
 
 
 if __name__ == "__main__":

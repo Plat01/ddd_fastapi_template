@@ -8,8 +8,8 @@ async def init_db():
     client: AsyncIOMotorClient = AsyncIOMotorClient(get_settings().MONGO_URI)
     try:
         # await init_beanie(database=client[get_settings().MONGO_DB_NAME], document_models=[UserDocument])  # TODO: add all models 
-        await init_beanie(database=client.db_name, document_models=[UserDocument])  # TODO: add all models 
-        print(client.db_name)
+        await init_beanie(database=client.users, document_models=[UserDocument])  # TODO: add all models 
+        print(client.users)
     except Exception as e:
         print(e)
         print("Failed to connect to MongoDB")
