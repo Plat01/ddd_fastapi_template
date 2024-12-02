@@ -3,6 +3,7 @@ from beanie import PydanticObjectId
 from pydantic import BaseModel, EmailStr
 
 class User(BaseModel):
+    # TODO: add all kinds of users here
     """
         User Model
     """
